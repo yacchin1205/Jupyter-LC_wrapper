@@ -371,7 +371,7 @@ class BufferedKernelBase(Kernel):
            os.path.exists(self.log_history_file_path):
             with open(self.log_history_file_path, 'r') as f:
                 data = json.load(f)
-            log_history_text = u''
+            log_history_text = u'{} logs recorded\n\n'.format(len(data))
             for log in data[-MAX_HISTORY_SUMMARIES:]:
                 log_history_text += parse_execution_info_log(log).to_stream() + u'\n'
             return data, log_history_text
